@@ -1,16 +1,16 @@
 import json
 import requests
-from settings import DataForLogin
-
 
 class Pets:
     """API библиотека к сайту http://34.141.58.52:8080/#/"""
+    """API biblioteca for http://34.141.58.52:8080/#/"""
 
     def __init__(self):
         self.base_url = 'http://34.141.58.52:8000/'
 
     def get_token(self) -> json:
         """Запрос в Swagger сайта получения уникального токена пользователя по указанным почте и паролю"""
+        """Request in Swagger of the site to obtain a unique user token using the specified email and password"""
         data = {"email": 'ololo123@gmail.com',
                 "password": '123456'}
         res = requests.post(self.base_url + 'login', data=json.dumps(data))
@@ -22,8 +22,8 @@ class Pets:
         return my_token, status, my_id
 
     def get_list_users(self) -> json:
-        """Запрос в сваггер сайта на получение списка пользователей. Здесь мы передаем только хеадер
-        Хеадер везде одинаковый: авторизейшен, ф беарер, май токен"""
+        """Запрос в сваггер сайта на получение списка пользователей."""
+        """Request to the site swagger to receive a list of users."""
         my_token = Pets().get_token()[0]
         headers = {'Authorization': f'Bearer {my_token}'}
         res = requests.get(self.base_url + 'users', headers=headers)
@@ -88,10 +88,12 @@ class Pets:
         return status
 
 
-# Pets().get_token()
-# Pets().get_list_users()
-# Pets().create_pet()
-# Pets().get_pet_photo()
+
+#To run a specific function, comment out the others
+Pets().get_token()
+Pets().get_list_users()
+Pets().create_pet()
+Pets().get_pet_photo()
 Pets().update_pet()
-# Pets().like_pet()
-# Pets().delete_pet()
+Pets().like_pet()
+Pets().delete_pet()
