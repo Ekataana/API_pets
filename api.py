@@ -3,7 +3,7 @@ import requests
 
 class Pets:
     """API библиотека к сайту http://34.141.58.52:8080/#/"""
-    """API biblioteca for http://34.141.58.52:8080/#/"""
+    """API library for http://34.141.58.52:8080/#/"""
 
     def __init__(self):
         self.base_url = 'http://34.141.58.52:8000/'
